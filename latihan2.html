@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan 2 - Form Registrasi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 50px;
+      background-color: #f4f6f8;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      background-color: #fff;
+      padding: 20px 25px; /* ✅ padding kiri-kanan ditambah agar seimbang */
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      width: 340px; /* ✅ sedikit diperlebar agar proporsional */
+      margin: 0 auto;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #333;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box; /* ✅ penting agar padding tidak melebihi form */
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .log {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 15px;
+      color: #333;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Form Registrasi</h2>
+  <form id="formRegistrasi">
+    <label for="namaDepan">Nama Depan</label>
+    <input type="text" id="namaDepan" required>
+
+    <label for="namaBelakang">Nama Belakang</label>
+    <input type="text" id="namaBelakang" required>
+
+    <label for="nilaiAngka">Nilai Angka</label>
+    <input type="number" id="nilaiAngka" min="0" max="100" required>
+
+    <button type="button" onclick="tampilkanLog()">Tampilkan Log</button>
+
+    <label for="hasilLog">Log:</label>
+    <div id="hasilLog" class="log"></div>
+  </form>
+
+  <script>
+    function tampilkanLog() {
+      let namaDepan = document.getElementById("namaDepan").value;
+      let namaBelakang = document.getElementById("namaBelakang").value;
+      let nilaiAngka = parseFloat(document.getElementById("nilaiAngka").value);
+
+      let nilaiHuruf = "";
+      if (nilaiAngka >= 90) nilaiHuruf = "A";
+      else if (nilaiAngka >= 80) nilaiHuruf = "B";
+      else if (nilaiAngka >= 70) nilaiHuruf = "C";
+      else if (nilaiAngka >= 60) nilaiHuruf = "D";
+      else nilaiHuruf = "E";
+
+      let hasil = `
+        Nama Lengkap : ${namaDepan} ${namaBelakang}<br>
+        Nilai Angka : ${nilaiAngka}<br>
+        Nilai Huruf : ${nilaiHuruf}
+      `;
+
+      document.getElementById("hasilLog").innerHTML = hasil;
+    }
+  </script>
+</body>
+</html>
